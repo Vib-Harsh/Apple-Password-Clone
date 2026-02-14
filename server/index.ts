@@ -8,6 +8,9 @@ import { STATUS_CODE } from './src/constants';
 import { sequelize } from './src/models';
 import { logger } from './src/utils';
 
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './src/config/swagger';
+
 const app = express();
 const PORT = process.env.PORT;
 // Security Middleware
@@ -19,6 +22,9 @@ app.use(morgan('dev'));
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use('/', routes);

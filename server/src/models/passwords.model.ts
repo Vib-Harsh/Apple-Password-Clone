@@ -1,7 +1,6 @@
 import { Model, DataTypes, Optional } from 'sequelize';
 import sequelize from '../config/database';
 import { commonColumns } from './common.columns';
-import User from './user.model';
 
 export interface PasswordAttributes {
     id: string;
@@ -50,6 +49,5 @@ Password.init({
     tableName: 'passwords',
 });
 
-Password.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 
 export default Password;

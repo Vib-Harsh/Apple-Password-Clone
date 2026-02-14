@@ -1,7 +1,6 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../config/database';
 import { commonColumns } from './common.columns';
-import Password from './passwords.model';
 
 export interface UserAttributes {
   id: string;
@@ -48,9 +47,5 @@ User.init(
     sequelize,
     tableName: 'users',
   }
-);
-
-// Associations
-User.hasMany(Password, { foreignKey: 'userId', as: 'passwords' });
-
+)
 export default User;
